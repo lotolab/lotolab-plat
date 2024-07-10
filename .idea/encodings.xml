@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/loto-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-framework/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-framework/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-quartz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-quartz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-system/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-system/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/loto-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-generator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/loto-generator/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

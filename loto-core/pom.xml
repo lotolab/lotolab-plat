@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.lotolab</groupId>
+        <artifactId>loto-plat</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>loto-core</artifactId>
+    <packaging>pom</packaging>
+
+    <name>loto-core</name>
+    <url>https://blog.lanbery.cc</url>
+    <modules>
+        <module>loto-common</module>
+        <module>loto-framework</module>
+        <module>loto-system</module>
+        <module>loto-quartz</module>
+        <module>loto-user</module>
+    </modules>
+
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+
+    </build>
+
+</project>
