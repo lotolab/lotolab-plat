@@ -8,10 +8,10 @@
     </parent>
 
     <artifactId>loto-common</artifactId>
-    <packaging>jar</packaging>
-
     <name>loto-common</name>
-
+    <description>
+        common package
+    </description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +52,11 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <!-- JSON工具类 -->

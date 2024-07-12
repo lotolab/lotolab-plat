@@ -1,5 +1,9 @@
 package com.lotolab.plat.web.controller.system;
 
+import com.lotolab.plat.obs.config.ObsConstants;
+import com.lotolab.plat.obs.service.ObjectStorageService;
+import com.lotolab.plat.obs.vo.UploadResultVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.lotolab.plat.common.annotation.Log;
-import com.lotolab.plat.common.config.LotoConfig;
 import com.lotolab.plat.common.core.controller.BaseController;
 import com.lotolab.plat.common.core.domain.AjaxResult;
 import com.lotolab.plat.common.core.domain.entity.SysUser;
@@ -18,10 +21,10 @@ import com.lotolab.plat.common.core.domain.model.LoginUser;
 import com.lotolab.plat.common.enums.BusinessType;
 import com.lotolab.plat.common.utils.SecurityUtils;
 import com.lotolab.plat.common.utils.StringUtils;
-import com.lotolab.plat.common.utils.file.FileUploadUtils;
-import com.lotolab.plat.common.utils.file.MimeTypeUtils;
 import com.lotolab.plat.framework.web.service.TokenService;
 import com.lotolab.plat.system.service.ISysUserService;
+
+
 
 /**
  * 个人信息 业务处理
@@ -30,6 +33,7 @@ import com.lotolab.plat.system.service.ISysUserService;
  */
 @RestController
 @RequestMapping("/system/user/profile")
+@Slf4j
 public class SysProfileController extends BaseController
 {
     @Autowired
@@ -37,6 +41,9 @@ public class SysProfileController extends BaseController
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private ObjectStorageService obsService;
 
     /**
      * 个人信息
@@ -121,7 +128,12 @@ public class SysProfileController extends BaseController
         if (!file.isEmpty())
         {
             LoginUser loginUser = getLoginUser();
-            String avatar = FileUploadUtils.upload(LotoConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION);
+            UploadResultVo vo = obsService.upload(file,ObsConstants.OBS_AVATAR_PREFIX);
+            // log.info("URL {},{}",vo.url(),vo);
+            // String avatar = FileUploadUtils.upload(LotoConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION);
+            if(!vo.isSuccess())
+                return error(vo.message());
+            String avatar = vo.url();
             if (userService.updateUserAvatar(loginUser.getUsername(), avatar))
             {
                 AjaxResult ajax = AjaxResult.success();

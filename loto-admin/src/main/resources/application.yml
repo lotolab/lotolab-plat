@@ -44,6 +44,7 @@ spring:
     include:
       - base
       - druid
+      - obs
       - redis
       - wechat
 

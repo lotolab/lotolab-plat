@@ -63,6 +63,19 @@
             <artifactId>loto-quartz</artifactId>
         </dependency>
 
+        <!-- 对象存储-->
+        <dependency>
+            <groupId>com.lotolab</groupId>
+            <artifactId>loto-obs</artifactId>
+        </dependency>
+
+        <!-- C端用戶模塊-->
+        <dependency>
+            <groupId>com.lotolab</groupId>
+            <artifactId>loto-user</artifactId>
+        </dependency>
+
+
         <!-- 代码生成-->
         <dependency>
             <groupId>com.lotolab</groupId>

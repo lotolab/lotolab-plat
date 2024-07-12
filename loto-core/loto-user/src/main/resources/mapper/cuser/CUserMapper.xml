@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lotolab.plat.mapper.CUserMapper">
+    
+    <resultMap type="CUser" id="CUserResult">
+        <result property="cid"    column="cid"    />
+        <result property="ucode"    column="ucode"    />
+        <result property="password"    column="password"    />
+        <result property="salt"    column="salt"    />
+        <result property="nickname"    column="nickname"    />
+        <result property="name"    column="name"    />
+        <result property="isReal"    column="is_real"    />
+        <result property="avatar"    column="avatar"    />
+        <result property="email"    column="email"    />
+        <result property="phone"    column="phone"    />
+        <result property="platform"    column="platform"    />
+        <result property="remark"    column="remark"    />
+        <result property="type"    column="type"    />
+        <result property="status"    column="status"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <resultMap id="CUserLotoUserOauthResult" type="CUser" extends="CUserResult">
+        <collection property="lotoUserOauthList" ofType="LotoUserOauth" column="cid" select="selectLotoUserOauthList" />
+    </resultMap>
+
+    <resultMap type="LotoUserOauth" id="LotoUserOauthResult">
+        <result property="id"    column="id"    />
+        <result property="cid"    column="cid"    />
+        <result property="vendorId"    column="vendor_id"    />
+        <result property="openid"    column="openid"    />
+        <result property="unionid"    column="unionid"    />
+        <result property="vendor"    column="vendor"    />
+        <result property="vendorName"    column="vendor_name"    />
+        <result property="remark"    column="remark"    />
+        <result property="status"    column="status"    />
+        <result property="syncTime"    column="sync_time"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectCUserVo">
+        select cid, ucode, password, salt, nickname, name, is_real, avatar, email, phone, platform, remark, type, status, del_flag, create_by, create_time, update_by, update_time from loto_user
+    </sql>
+
+    <select id="selectCUserList" parameterType="CUser" resultMap="CUserResult">
+        <include refid="selectCUserVo"/>
+        <where>  
+            <if test="ucode != null  and ucode != ''"> and ucode = #{ucode}</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="salt != null  and salt != ''"> and salt = #{salt}</if>
+            <if test="nickname != null  and nickname != ''"> and nickname like concat('%', #{nickname}, '%')</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="isReal != null "> and is_real = #{isReal}</if>
+            <if test="email != null  and email != ''"> and email like concat('%', #{email}, '%')</if>
+            <if test="phone != null  and phone != ''"> and phone like concat('%', #{phone}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectCUserByCid" parameterType="Long" resultMap="CUserLotoUserOauthResult">
+        select cid, ucode, password, salt, nickname, name, is_real, avatar, email, phone, platform, remark, type, status, del_flag, create_by, create_time, update_by, update_time
+        from loto_user
+        where cid = #{cid}
+    </select>
+
+    <select id="selectLotoUserOauthList" resultMap="LotoUserOauthResult">
+        select id, cid, vendor_id, openid, unionid, vendor, vendor_name, remark, status, sync_time, del_flag, create_by, create_time, update_by, update_time
+        from loto_user_oauth
+        where cid = #{cid}
+    </select>
+
+    <insert id="insertCUser" parameterType="CUser" useGeneratedKeys="true" keyProperty="cid">
+        insert into loto_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ucode != null">ucode,</if>
+            <if test="password != null">password,</if>
+            <if test="salt != null">salt,</if>
+            <if test="nickname != null">nickname,</if>
+            <if test="name != null and name != ''">name,</if>
+            <if test="isReal != null">is_real,</if>
+            <if test="avatar != null">avatar,</if>
+            <if test="email != null">email,</if>
+            <if test="phone != null">phone,</if>
+            <if test="platform != null">platform,</if>
+            <if test="remark != null">remark,</if>
+            <if test="type != null">type,</if>
+            <if test="status != null">status,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ucode != null">#{ucode},</if>
+            <if test="password != null">#{password},</if>
+            <if test="salt != null">#{salt},</if>
+            <if test="nickname != null">#{nickname},</if>
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="isReal != null">#{isReal},</if>
+            <if test="avatar != null">#{avatar},</if>
+            <if test="email != null">#{email},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="platform != null">#{platform},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="type != null">#{type},</if>
+            <if test="status != null">#{status},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCUser" parameterType="CUser">
+        update loto_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ucode != null">ucode = #{ucode},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="salt != null">salt = #{salt},</if>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="isReal != null">is_real = #{isReal},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="platform != null">platform = #{platform},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where cid = #{cid}
+    </update>
+
+    <delete id="deleteCUserByCid" parameterType="Long">
+        delete from loto_user where cid = #{cid}
+    </delete>
+
+    <delete id="deleteCUserByCids" parameterType="String">
+        delete from loto_user where cid in 
+        <foreach item="cid" collection="array" open="(" separator="," close=")">
+            #{cid}
+        </foreach>
+    </delete>
+    
+    <delete id="deleteLotoUserOauthByCids" parameterType="String">
+        delete from loto_user_oauth where cid in 
+        <foreach item="cid" collection="array" open="(" separator="," close=")">
+            #{cid}
+        </foreach>
+    </delete>
+
+    <delete id="deleteLotoUserOauthByCid" parameterType="Long">
+        delete from loto_user_oauth where cid = #{cid}
+    </delete>
+
+    <insert id="batchLotoUserOauth">
+        insert into loto_user_oauth( id, cid, vendor_id, openid, unionid, vendor, vendor_name, remark, status, sync_time, del_flag, create_by, create_time, update_by, update_time) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.id}, #{item.cid}, #{item.vendorId}, #{item.openid}, #{item.unionid}, #{item.vendor}, #{item.vendorName}, #{item.remark}, #{item.status}, #{item.syncTime}, #{item.delFlag}, #{item.createBy}, #{item.createTime}, #{item.updateBy}, #{item.updateTime})
+        </foreach>
+    </insert>
+</mapper>

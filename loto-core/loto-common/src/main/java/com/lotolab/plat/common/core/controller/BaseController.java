@@ -9,11 +9,7 @@ import com.lotolab.plat.common.utils.PageUtils;
 import com.lotolab.plat.common.utils.SecurityUtils;
 import com.lotolab.plat.common.utils.StringUtils;
 import com.lotolab.plat.common.utils.sql.SqlUtil;
-import com.lotolab.plat.common.utils.DateUtils;
-import com.lotolab.plat.common.utils.PageUtils;
-import com.lotolab.plat.common.utils.SecurityUtils;
-import com.lotolab.plat.common.utils.StringUtils;
-import com.lotolab.plat.common.utils.sql.SqlUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -26,11 +22,7 @@ import com.lotolab.plat.common.core.domain.model.LoginUser;
 import com.lotolab.plat.common.core.page.PageDomain;
 import com.lotolab.plat.common.core.page.TableDataInfo;
 import com.lotolab.plat.common.core.page.TableSupport;
-import com.lotolab.plat.common.utils.DateUtils;
-import com.lotolab.plat.common.utils.PageUtils;
-import com.lotolab.plat.common.utils.SecurityUtils;
-import com.lotolab.plat.common.utils.StringUtils;
-import com.lotolab.plat.common.utils.sql.SqlUtil;
+
 
 /**
  * web层通用数据处理

@@ -18,6 +18,7 @@
         <module>loto-system</module>
         <module>loto-quartz</module>
         <module>loto-user</module>
+        <module>loto-obs</module>
     </modules>
 
 

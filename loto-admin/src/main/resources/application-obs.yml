@@ -1,0 +1,12 @@
+loto:
+  obs:
+    type: tencent
+
+    # Tencent COS
+    tencent:
+      app-id: 1307957640
+      bucket: shucang-01-1307957640
+      region: ap-beijing
+      cdn: https://cdn.sc.yuanjianglingjing.com
+      secret-id: AKIDRnyxiGk3hBUZR5XnJl7IPJ2c0B9tQn9I
+      secret-key: 6asxpT0MVQ6ZpriM0SP8ey4zhDW6WjiT

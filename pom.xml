@@ -36,6 +36,9 @@
     <poi.version>4.1.2</poi.version>
     <velocity.version>2.3</velocity.version>
     <jwt.version>0.9.1</jwt.version>
+    <tencent.cos.version>5.6.213</tencent.cos.version>
+    <lobok.version>1.18.34</lobok.version>
+    <hutool.version>5.8.29</hutool.version>
   </properties>
 
   <modules>
@@ -155,6 +158,29 @@
         <version>${kaptcha.version}</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lobok.version}</version>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- 腾讯COS -->
+      <dependency>
+        <groupId>com.qcloud</groupId>
+        <artifactId>cos_api</artifactId>
+        <version>${tencent.cos.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-bom</artifactId>
+        <version>${hutool.version}</version>
+        <type>pom</type>
+        <!-- 注意这里是import -->
+        <scope>import</scope>
+      </dependency>
+
       <!-- 通用工具-->
       <dependency>
         <groupId>com.lotolab</groupId>
@@ -197,12 +223,21 @@
         <version>${loto-core.version}</version>
       </dependency>
 
+      <!-- 对象存储-->
+      <dependency>
+        <groupId>com.lotolab</groupId>
+        <artifactId>loto-obs</artifactId>
+        <version>${loto-core.version}</version>
+      </dependency>
+
       <!-- 代码生成-->
       <dependency>
         <groupId>com.lotolab</groupId>
         <artifactId>loto-generator</artifactId>
         <version>${loto-core.version}</version>
       </dependency>
+
+
 
     </dependencies>
   </dependencyManagement>
