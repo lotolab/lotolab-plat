@@ -46,4 +46,4 @@ build/
 !*/build/*.java
 !*/build/*.html
 !*/build/*.xml
-*/src/resources/application-*.yml
+**/src/resources/application-*.yml
